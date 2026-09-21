@@ -102,7 +102,7 @@ export function Networks() {
 
       <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3">
         <TextLink href="/campaigns#networks">
-          See all six network concepts
+          See the network concepts on the campaigns page
         </TextLink>
         <p className="text-[0.8125rem] text-neutral-600">
           Role archetypes are used throughout the site. No athlete is named,

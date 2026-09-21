@@ -18,10 +18,6 @@ const description =
 export const metadata: Metadata = {
   title: `${siteConfig.name} — Make local NIL perform.`,
   description,
-  openGraph: {
-    title: `${siteConfig.name} — Make local NIL perform.`,
-    description,
-  },
 };
 
 export default function HomePage() {

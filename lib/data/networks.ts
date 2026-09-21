@@ -162,56 +162,6 @@ export const networks: NetworkConcept[] = [
     ],
     featuredOnHome: true,
   },
-  {
-    id: "international-athletes",
-    name: "International Athlete Network",
-    focus:
-      "Athletes studying away from home, often in Olympic-sport programmes, with distinct audiences.",
-    businessFit:
-      "Businesses reaching the international student community and language-specific audiences.",
-    roster: [
-      {
-        number: "01",
-        sport: "Tennis",
-        role: "Multilingual content",
-        contribution: "Content only",
-        localRelevance: "Reaches the international student community near campus.",
-      },
-      {
-        number: "02",
-        sport: "Swimming",
-        role: "Campus-life content",
-        contribution: "Content + appearance",
-        localRelevance: "Connected to student groups that organise off-campus outings.",
-      },
-    ],
-    featuredOnHome: false,
-  },
-  {
-    id: "sustainability",
-    name: "Sustainability Ambassadors",
-    focus:
-      "Athletes involved in environmental or community-service work on campus.",
-    businessFit:
-      "Businesses with a community, outdoor, or environmental positioning.",
-    roster: [
-      {
-        number: "01",
-        sport: "Cross country",
-        role: "Community clean-up participation",
-        contribution: "In-person + content",
-        localRelevance: "Organises trail and park volunteer days.",
-      },
-      {
-        number: "02",
-        sport: "Rowing",
-        role: "Waterway stewardship content",
-        contribution: "Content only",
-        localRelevance: "Trains on the local waterway year-round.",
-      },
-    ],
-    featuredOnHome: false,
-  },
 ];
 
 export const homeNetworks = networks.filter((item) => item.featuredOnHome);

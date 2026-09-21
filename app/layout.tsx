@@ -32,12 +32,6 @@ export const metadata: Metadata = {
     template: `%s — ${siteConfig.name}`,
   },
   description: siteConfig.positioning,
-  openGraph: {
-    title: `${siteConfig.name} — Make local NIL perform.`,
-    description: siteConfig.positioning,
-    type: "website",
-    siteName: siteConfig.name,
-  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
