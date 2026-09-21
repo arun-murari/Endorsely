@@ -1,0 +1,236 @@
+@import "tailwindcss";
+
+/*
+  MatchPoint brand system.
+  Editorial sports publication meets a practical local-marketing product.
+  All colour, type and spacing decisions live here as tokens — components
+  should never hardcode a hex value.
+*/
+
+@theme {
+  /* Surfaces */
+  --color-paper: #f7f5f0;
+  --color-paper-tint: #efebe3;
+  --color-ink: #14161a;
+  --color-ink-soft: #1c1f24;
+  --color-ink-2: #3a3f46;
+
+  /* Neutral scale */
+  --color-neutral-300: #d6d1c7;
+  --color-neutral-400: #b3aea3;
+  --color-neutral-500: #8a8c90;
+  --color-neutral-600: #6b7280;
+  --color-neutral-700: #4b5058;
+
+  /* Accent — controlled use only */
+  --color-lime: #c6f24e;
+  --color-lime-deep: #a8d22f;
+
+  /* Hairlines */
+  --color-rule: rgba(20, 22, 26, 0.14);
+  --color-rule-strong: rgba(20, 22, 26, 0.32);
+  --color-rule-invert: rgba(247, 245, 240, 0.16);
+
+  /* Type */
+  --font-display: var(--font-barlow-condensed), "Arial Narrow", sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  /* Editorial measure */
+  --spacing-measure: 68ch;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-lime);
+    color: var(--color-ink);
+  }
+
+  /* Accent focus ring, with a hairline so it reads on both paper and ink. */
+  :focus-visible {
+    outline: 3px solid var(--color-lime);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 1px var(--color-ink);
+    border-radius: 1px;
+  }
+
+  .on-ink :focus-visible,
+  .on-ink :focus-visible * {
+    box-shadow: 0 0 0 1px var(--color-paper);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@layer components {
+  /* Condensed display lockup: uppercase, very tight tracking. */
+  .display {
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.025em;
+    line-height: 0.92;
+  }
+
+  .display-tight {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 1;
+  }
+
+  .mono-label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .measure {
+    max-width: var(--spacing-measure);
+  }
+
+  /* Dotted leader row used in receipts, scorecards and evidence packets. */
+  .leader {
+    background-image: radial-gradient(
+      circle,
+      var(--color-rule-strong) 1px,
+      transparent 1.2px
+    );
+    background-position: bottom 0.28em left;
+    background-size: 6px 2px;
+    background-repeat: repeat-x;
+  }
+
+  .leader-invert {
+    background-image: radial-gradient(
+      circle,
+      rgba(247, 245, 240, 0.4) 1px,
+      transparent 1.2px
+    );
+    background-position: bottom 0.28em left;
+    background-size: 6px 2px;
+    background-repeat: repeat-x;
+  }
+
+  /* Track-lane motif: repeating hairlines. */
+  .lanes {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      var(--color-rule) 0,
+      var(--color-rule) 1px,
+      transparent 1px,
+      transparent 14px
+    );
+  }
+
+  .lanes-invert {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      var(--color-rule-invert) 0,
+      var(--color-rule-invert) 1px,
+      transparent 1px,
+      transparent 14px
+    );
+  }
+
+  /* Perforated edge for receipt/report artifacts. */
+  .perforate-b {
+    -webkit-mask-image: radial-gradient(
+      circle 5px at 5px 100%,
+      transparent 4.6px,
+      #000 5px
+    );
+    mask-image: radial-gradient(
+      circle 5px at 5px 100%,
+      transparent 4.6px,
+      #000 5px
+    );
+    -webkit-mask-size: 14px 100%;
+    mask-size: 14px 100%;
+    -webkit-mask-repeat: repeat-x;
+    mask-repeat: repeat-x;
+  }
+
+  /* Hover underline that grows from the left. */
+  .underline-grow {
+    position: relative;
+  }
+  .underline-grow::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 2px;
+    width: 100%;
+    background-color: var(--color-lime);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 180ms ease;
+  }
+  .underline-grow:hover::after,
+  .underline-grow[data-active="true"]::after {
+    transform: scaleX(1);
+  }
+
+  .field-input {
+    width: 100%;
+    background-color: var(--color-paper);
+    border: 1px solid var(--color-rule-strong);
+    padding: 0.6rem 0.7rem;
+    font-size: 0.9375rem;
+    color: var(--color-ink);
+  }
+  .field-input::placeholder {
+    color: var(--color-neutral-500);
+  }
+  .field-input:hover {
+    border-color: var(--color-ink-2);
+  }
+}
+
+/* Motion is restrained everywhere, and switched off on request. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
