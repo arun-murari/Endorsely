@@ -1,7 +1,8 @@
-import { CtaLink } from "@/components/ui/Button";
+import { CtaLink, TextLink } from "@/components/ui/Button";
 import { ClaimLabel } from "@/components/ui/Chip";
 import { LaneRule, RosterNumber } from "@/components/ui/Marks";
 import { DisplayHeading, Eyebrow, Lede, Section } from "@/components/ui/Section";
+import { workCompleted, workPlanned } from "@/lib/data/pilotPlan";
 import { pilotMarketPhrase, siteConfig } from "@/lib/site.config";
 
 const pilotShape = [
@@ -27,13 +28,6 @@ const pilotShape = [
   },
 ];
 
-const validationPlan = [
-  "Speak with ten nearby businesses about objectives and budgets",
-  "Seek two sponsor letters of intent",
-  "Prepare one common campaign agreement for review",
-  "Interview a compliance coordinator or athletic advisor",
-  "Map the existing school review process end to end",
-];
 
 const nextSteps = [
   {
@@ -80,25 +74,47 @@ export function LocalPilot() {
           <LaneRule lanes={4} numbered className="mt-8 max-w-xs" />
 
           <div className="mt-10 border border-ink/20 p-5">
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <h3 className="display-tight text-[1.15rem]">Validation plan</h3>
+            <h3 className="display-tight text-[1.15rem]">Where we are today</h3>
+            <p className="mt-2 text-[0.8125rem] leading-snug text-neutral-600">
+              The complete list, both columns. An inquiry through this site is not
+              a letter of intent.
+            </p>
+            <div className="mt-5 grid gap-x-6 gap-y-5 sm:grid-cols-2">
+              <div>
+                <h4 className="mono-label border-b-2 border-lime pb-2 text-ink-2">
+                  Done
+                </h4>
+                <ul>
+                  {workCompleted.map((item) => (
+                    <li
+                      key={item}
+                      className="border-b border-rule py-2 text-[0.875rem] leading-snug text-ink"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4 className="mono-label border-b-2 border-ink/40 pb-2 text-ink-2">
+                  Still planned
+                </h4>
+                <ul>
+                  {workPlanned.map((item) => (
+                    <li
+                      key={item}
+                      className="border-b border-rule py-2 text-[0.875rem] leading-snug text-ink-2"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <TextLink href="/#pilot-plan">Read the ninety-day plan</TextLink>
               <ClaimLabel kind="planned" />
             </div>
-            <p className="mt-2 text-[0.8125rem] leading-snug text-neutral-600">
-              Activities we intend to complete before launch. None of these have
-              happened yet, and an inquiry through this site is not a letter of
-              intent.
-            </p>
-            <ul className="mt-4">
-              {validationPlan.map((item) => (
-                <li
-                  key={item}
-                  className="border-t border-rule py-2 text-[0.875rem] leading-snug text-ink-2"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
 

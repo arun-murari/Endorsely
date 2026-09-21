@@ -277,6 +277,13 @@ export default function AthletesPage() {
               a door three miles from campus. What matters is whether you can help
               with that — and there are several routes in.
             </Lede>
+            <p className="measure mt-4 text-[0.9375rem] leading-relaxed text-ink-2">
+              Value here comes from local relationships and what you know, not from
+              celebrity. A runner can credibly introduce a training studio; a
+              volleyball player can attract families to a skills event. Neither
+              needs to be nationally recognised to be the right person for the
+              campaign.
+            </p>
           </div>
           <ul className="grid gap-x-8 gap-y-5 lg:col-span-7 sm:grid-cols-2">
             {valueSignals.map((signal) => (

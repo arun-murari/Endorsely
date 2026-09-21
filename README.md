@@ -42,10 +42,10 @@ Node 22 and npm 10 were used for development.
 Data and copy are kept out of the components:
 
 - `lib/site.config.ts` — brand strings, navigation, footer groups, the placeholder
-  contact address, feature flags, and the **pilot market**. While
-  `pilotMarket.confirmed` is `false`, `pilotMarketPhrase()` returns
-  campus-agnostic language ("Built to start locally, one campus at a time"). Set
-  `confirmed: true` with a `campus`/`city` and the copy on the site changes with it.
+  contact address, feature flags, and the **pilot market**. `pilotMarketPhrase()`
+  has three states: nothing known, city known but campus unconfirmed (where the
+  site sits today, with `city: "Austin, Texas"`), and a confirmed campus. Set
+  `confirmed: true` with a `campus` and the copy on the site changes with it.
 - `lib/data/packages.ts` — the five example campaign formats, objectives,
   activities, business categories.
 - `lib/data/networks.ts` — the four proposed network concepts, described with role
@@ -56,8 +56,14 @@ Data and copy are kept out of the components:
   reconcile. `demoBudgetTotals` recomputes the totals from the parts.
 - `lib/data/evidencePacket.ts` — the four packet groups, derived from the campaign,
   plus the plain-text serialiser used by the copy action.
-- `lib/data/faq.ts`, `lib/data/fees.ts` — FAQ content and **prototype fee
-  assumptions** (see below).
+- `lib/data/faq.ts`, `lib/data/fees.ts` — FAQ content and the **proposed fee
+  model** (see below).
+- `lib/data/marketContext.ts` — the three third-party market figures, each stored
+  with its source and its caveat so the UI can never render one without the other.
+- `lib/data/landscape.ts` — the competitive landscape, described neutrally. No
+  logos, no comparison table, no claim of integration with any platform named.
+- `lib/data/pilotPlan.ts` — the ninety-day plan, the risk register, and the
+  authoritative list of work actually completed to date.
 - `lib/planner/rules.ts` + `lib/planner/budget.ts` — pure functions behind the
   planner: format recommendation, brief assembly, and budget allocation.
 - `lib/planner/handoff.ts` — carries planner state to `/contact` and `/demo` via
@@ -65,10 +71,18 @@ Data and copy are kept out of the components:
 - `lib/forms/config.ts` + `lib/forms/submit.ts` — field definitions per inquiry type
   and the single submission path.
 
-Fee assumptions in `lib/data/fees.ts` are **unapproved internal planning
-assumptions**, used only to keep the planner's illustrative arithmetic consistent.
-They are deliberately not published as a price list, and the site has no pricing
-tiers.
+The fee model in `lib/data/fees.ts` is a **proposal that has not been tested with
+customers**. It keeps the planner's arithmetic consistent and is labelled as
+proposed wherever a figure appears. It is deliberately not published as a price
+list, and the site has no pricing tiers.
+
+## Routes on the homepage
+
+The homepage alternates surface tones deliberately (paper → tint → paper → ink →
+…). Three sections were added from the pitch material and sit inside that rhythm:
+`MarketContext` (cited third-party figures, each with its caveat), `Landscape`
+(the competitive landscape plus the differentiation pull-quote), and
+`PilotRoadmap` (the ninety-day plan and risk register, on the second dark band).
 
 ## Forms: no backend is connected
 
@@ -116,26 +130,55 @@ does not receive mail. Replace it before any real traffic reaches the site.
   fictional recordkeeping or an explicitly proposed future workflow.
 - **Sitemap, robots, and OG images** — not configured.
 
-## Business decisions to confirm before public launch
+## Business decisions
 
-1. **Pricing model and fee structure** — merchant campaign fees, managed-service
-   fees, possible subscriptions, and institutional licensing are all unresolved
-   hypotheses. Nothing in `lib/data/fees.ts` is approved.
-2. **Pilot campus and city** — currently unconfirmed
-   (`siteConfig.pilotMarket.confirmed === false`).
-3. **Institutional licensing terms** — scope, price, and what a school would
-   actually receive.
-4. **Athlete compensation policy** — how amounts are set, floors, and how scope
-   changes are handled.
-5. **Legal review of agreement templates** — the demo shows a draft structural
+### Settled enough to build on (still unvalidated with customers)
+
+1. **Fee model** — a **20% management fee taken within an all-in campaign
+   budget**, with a **proposed $1,000 minimum campaign budget**. The other 80% is
+   campaign spending: athlete compensation plus any included delivery costs.
+   Athlete money is pass-through, not platform revenue. Worked example: a $2,000
+   campaign is $1,600 of campaign spending and a $400 fee. This lives in
+   `lib/data/fees.ts` and drives `lib/planner/budget.ts` and the demo campaign.
+   It is a **proposal** — willingness to pay has not been tested, so every figure
+   on the site carries that caveat and the site publishes no pricing tiers.
+2. **Pilot city** — **Austin, Texas** (`siteConfig.pilotMarket.city`). The
+   **campus remains unconfirmed** (`pilotMarket.confirmed === false`), and no
+   school has agreed to anything. `pilotMarketPhrase()` handles the
+   city-known / campus-unknown state, and no copy pairs the city with an
+   institution. Do not introduce phrasing that implies a specific school.
+
+### Still open
+
+3. **Pilot campus** — which campus, and on what terms. Naming the city settles
+   nothing about the school.
+4. **Institutional licensing terms** — scope, price, and what a school would
+   actually receive. Noted in `lib/data/fees.ts` as an unvalidated possibility
+   only, and deliberately absent from the UI.
+5. **Reporting subscription** — a $149/month recurring reporting product has been
+   floated internally. No demand evidence exists; it is a comment in
+   `lib/data/fees.ts`, not a product, and must not be published as pricing.
+6. **Athlete compensation policy** — how amounts are set, floors, and how scope
+   changes are handled. The allocation floor in `fees.ts` is a planning
+   assumption, not a policy.
+7. **Legal review of agreement templates** — the demo shows a draft structural
    example only; nothing has been reviewed by counsel.
-6. **Verification sources for the evidence packet** — business identity, content
+8. **Verification sources for the evidence packet** — business identity, content
    publication, redemption counts, payment records, disclosure confirmation.
-7. **Real contact details and legal pages** — a working address, and privacy/terms
+9. **Real contact details and legal pages** — a working address, and privacy/terms
    pages written by someone qualified. The site deliberately links to no legal
    pages rather than publishing fabricated ones.
-8. **Claim review** — a final pass confirming every capability on the site is
-   labelled correctly as implemented, proposed, or illustrative.
+10. **Claim review** — a final pass confirming every capability on the site is
+    labelled correctly as implemented, proposed, or illustrative.
+
+### Things the site must never show
+
+Internal P&L scenarios — fixed overhead, campaign-volume cases, break-even,
+operating margin, gross margin, per-campaign delivery cost — stay in the business
+plan. The site shows **no projected revenue or profit**, and `lib/data/pilotPlan.ts`
+is the source of truth for what has actually been done: the concept, competitor
+research, and the business and pilot models. Interviews, paying clients,
+partnerships and a working platform are planned milestones, not achievements.
 
 ## Deployment (GitHub Pages)
 

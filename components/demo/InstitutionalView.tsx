@@ -7,6 +7,7 @@ import {
   demoMerchantLabel,
   formatUsd,
 } from "@/lib/data/demoCampaign";
+import { pricingDisclosure } from "@/lib/data/fees";
 
 /**
  * Institutional review view. Same campaign object as the merchant view, ordered
@@ -53,6 +54,19 @@ export function InstitutionalView() {
               }
               note="Sample figures. No payment has occurred and no payment is held by anyone."
               meta={<StatusChip status="provided" />}
+            />
+            <FieldRow
+              label="Campaign budget"
+              value={
+                <span className="font-mono text-[0.875rem] tabular-nums text-ink">
+                  {formatUsd(demoBudgetTotals.total)} all-in ={" "}
+                  {formatUsd(demoBudgetTotals.athletePool)} athlete compensation +{" "}
+                  {formatUsd(demoBudgetTotals.otherIncludedCosts)} materials
+                  allowance + {formatUsd(demoBudgetTotals.managementFee)} Endorsely
+                  management fee ({demoBudgetTotals.feeRatePercent}%)
+                </span>
+              }
+              note={`Recorded so a reviewer can see what the merchant paid and what reached the athletes. Athlete compensation is campaign spending rather than Endorsely revenue. ${pricingDisclosure}`}
             />
             <FieldRow
               label="Campaign dates"

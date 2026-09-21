@@ -3,10 +3,13 @@ import { FaqSection } from "@/components/home/FaqSection";
 import { FinalCta } from "@/components/home/FinalCta";
 import { Hero } from "@/components/home/Hero";
 import { HowItWorks } from "@/components/home/HowItWorks";
+import { Landscape } from "@/components/home/Landscape";
 import { LocalPilot } from "@/components/home/LocalPilot";
 import { ManagedSupport } from "@/components/home/ManagedSupport";
+import { MarketContext } from "@/components/home/MarketContext";
 import { Networks } from "@/components/home/Networks";
 import { Packages } from "@/components/home/Packages";
+import { PilotRoadmap } from "@/components/home/PilotRoadmap";
 import { Problem } from "@/components/home/Problem";
 import { Reporting } from "@/components/home/Reporting";
 import { SchoolWorkflow } from "@/components/home/SchoolWorkflow";
@@ -29,9 +32,12 @@ export default function HomePage() {
       <Reporting />
       <Networks />
       <HowItWorks />
+      <MarketContext />
+      <Landscape />
       <SchoolWorkflow />
       <ManagedSupport />
       <LocalPilot />
+      <PilotRoadmap />
       <FaqSection />
       <FinalCta />
     </>

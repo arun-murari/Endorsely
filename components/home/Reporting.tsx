@@ -9,6 +9,7 @@ import {
   reportingCaveats,
   sampleReport,
   sampleReportRatio,
+  sampleReportRatioNote,
 } from "@/lib/data/reporting";
 
 const statusCopy = {
@@ -97,7 +98,7 @@ export function Reporting() {
                 invert
                 label={sampleReport.ratioLabel}
                 value={sampleReportRatio}
-                note="$2,450 of tracked revenue divided by $900 of campaign spend. Revenue, not profit — and not a measure of what the campaign caused."
+                note={sampleReportRatioNote}
               />
             </div>
 

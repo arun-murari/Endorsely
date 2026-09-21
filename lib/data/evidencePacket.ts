@@ -14,6 +14,7 @@ import {
   formatUsd,
   type FieldStatus,
 } from "@/lib/data/demoCampaign";
+import { pricingDisclosure } from "@/lib/data/fees";
 
 export type PacketField = {
   label: string;
@@ -113,6 +114,18 @@ export const evidencePacket: PacketGroup[] = [
         status: "provided",
       },
       {
+        label: "Campaign budget and fee",
+        value: `${formatUsd(demoBudgetTotals.total)} all-in: ${formatUsd(
+          demoBudgetTotals.athletePool,
+        )} athlete compensation, ${formatUsd(
+          demoBudgetTotals.otherIncludedCosts,
+        )} materials allowance, ${formatUsd(
+          demoBudgetTotals.managementFee,
+        )} Endorsely management fee (${demoBudgetTotals.feeRatePercent}%)`,
+        status: "provided",
+        note: `Athlete compensation is campaign spending, not Endorsely revenue. ${pricingDisclosure}`,
+      },
+      {
         label: "Campaign dates",
         value: demoCampaign.campaignWindow.display,
         status: "provided",
@@ -210,9 +223,14 @@ export function serialisePacket(): string {
     lines.push(`- ${item.label}: ${formatUsd(item.amount)}`);
   });
   lines.push(
-    `- Endorsely planning and coordination: ${formatUsd(demoBudgetTotals.planningAndCoordination)}`,
+    `- Endorsely management fee (${demoBudgetTotals.feeRatePercent}%): ${formatUsd(demoBudgetTotals.managementFee)}`,
   );
-  lines.push(`- Illustrative total: ${formatUsd(demoBudgetTotals.total)}`);
+  lines.push(
+    `- Illustrative all-in campaign budget: ${formatUsd(demoBudgetTotals.total)}`,
+  );
+  lines.push(
+    `- Athlete compensation is campaign spending, not Endorsely revenue. ${pricingDisclosure}`,
+  );
   lines.push("");
 
   evidencePacket.forEach((group) => {

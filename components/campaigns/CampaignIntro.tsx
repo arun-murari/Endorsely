@@ -24,6 +24,12 @@ export function CampaignIntro() {
             {siteConfig.nilDefinition} (NIL) work is only worth the effort when
             someone can count what happened afterwards.
           </Lede>
+          <p className="measure mt-4 text-[0.9375rem] leading-relaxed text-ink-2">
+            Formats exist so the workload does not fall on the owner. Choosing
+            athletes, negotiating deliverables, coordinating content and setting
+            up measurement is what makes a small campaign not worth pursuing — so
+            it is the part Endorsely is designed to absorb.
+          </p>
           <p className="measure mt-5 text-[0.9375rem] leading-relaxed text-neutral-600">
             {siteConfig.status.line} Nothing on this page is inventory, a quote,
             or a booking, and no format carries a published price.

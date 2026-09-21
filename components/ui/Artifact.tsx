@@ -80,7 +80,7 @@ export function WeekStrip({
         >
           <div className="flex items-baseline gap-2">
             <span
-              className={`font-mono text-sm tabular-nums ${
+              className={`whitespace-nowrap font-mono text-sm tabular-nums ${
                 invert ? "text-lime" : "text-ink"
               }`}
             >

@@ -21,6 +21,14 @@ export function Networks() {
             Picking the single biggest account in town is a guess about reach. A
             small group chosen for the job is a plan about customers.
           </Lede>
+          <p className="measure mt-4 text-[0.9375rem] leading-relaxed text-ink-2">
+            For athletes in swimming, track, volleyball, tennis and softball, the
+            value is usually local relationships and subject expertise rather than
+            celebrity. A runner can credibly introduce a training studio; a
+            volleyball player can attract families to a skills event. Audience size
+            alone does not tell you which of them will bring a business paying
+            customers.
+          </p>
         </div>
 
         <ul className="grid gap-x-8 gap-y-6 lg:col-span-7 sm:grid-cols-2">

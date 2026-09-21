@@ -7,6 +7,7 @@ import {
   demoCampaign,
   formatUsd,
 } from "@/lib/data/demoCampaign";
+import { pricingDisclosure } from "@/lib/data/fees";
 
 /**
  * Merchant campaign view. Everything is read from the shared demo campaign
@@ -145,18 +146,25 @@ export function MerchantView() {
               />
             ))}
             <DataRow
-              label="Planning and coordination"
-              value={formatUsd(demoBudgetTotals.planningAndCoordination)}
+              label={`Endorsely management fee (${demoBudgetTotals.feeRatePercent}%)`}
+              value={formatUsd(demoBudgetTotals.managementFee)}
             />
             <DataRow
               emphasis
-              label="Illustrative total"
+              label="Illustrative campaign budget"
               value={formatUsd(demoBudgetTotals.total)}
             />
           </div>
-          <p className="mt-4 text-[0.8125rem] leading-snug text-neutral-600">
-            {demoCampaign.budget.note} Per-athlete amounts come from the
-            compensation pool, not from the total.
+          <p className="mt-4 text-[0.875rem] leading-snug text-ink-2">
+            One all-in budget. {formatUsd(demoBudgetTotals.campaignSpend)} of it is
+            campaign spending — athlete compensation and the materials allowance —
+            and {formatUsd(demoBudgetTotals.managementFee)} is the Endorsely
+            management fee. Athlete money is campaign spending, not Endorsely
+            revenue, and per-athlete amounts come from the compensation pool
+            rather than from the total.
+          </p>
+          <p className="mt-3 text-[0.8125rem] leading-snug text-neutral-600">
+            {demoCampaign.budget.note} {pricingDisclosure}
           </p>
         </Artifact>
 

@@ -44,10 +44,28 @@ export const faq: FaqItem[] = [
   },
   {
     id: "budget-includes",
-    question: "What would the campaign budget include?",
+    question: "What would the campaign budget include, and how does Endorsely get paid?",
     answer: [
-      "A campaign budget is planned as separate line items: athlete compensation, Endorsely planning and coordination, and any other explicitly included costs such as clinic materials. The planner shows those lines added up so nothing is hidden.",
-      "Figures in the planner are illustrative allocations for planning conversations. Pricing is not settled, and final scope and cost would come in a written proposal.",
+      "One all-in figure, split by a fixed rule. Endorsely proposes a 20% management fee taken within the campaign budget; the other 80% is campaign spending — athlete compensation and any explicitly included delivery costs such as clinic materials. On a $2,000 campaign that is $1,600 of campaign spending and a $400 fee.",
+      "Athlete compensation is campaign money passing through, not Endorsely revenue. The planner shows every line added up so nothing is hidden, and per-athlete amounts always come from the compensation pool rather than from the total.",
+      "This is proposed pricing. We will test willingness to pay before finalizing it, which is why there are no pricing tiers on this site and why final scope and cost would come in a written proposal.",
+    ],
+  },
+  {
+    id: "minimum-budget",
+    question: "Is there a minimum campaign budget?",
+    answer: [
+      "The proposed minimum is $1,000 for the whole campaign. It is a minimum budget, not a minimum fee: below that level the management fee does not cover the work of designing, coordinating, documenting and reporting on a campaign, and we would rather say so than run something badly.",
+      "If your budget is smaller, the planner says so and points you at a conversation instead of printing an allocation that does not mean anything. A smaller single-athlete pilot may still be worth doing, and that is worth talking about.",
+    ],
+  },
+  {
+    id: "nil-platforms",
+    question: "How does Endorsely relate to platforms like Opendorse or Teamworks?",
+    answer: [
+      "Those platforms already exist and already do a lot. Teamworks Exchange connects businesses and athletes and supports payments and reporting; Opendorse offers athlete campaigns, a marketplace, contracts and measurement; MOGL combines brand partnerships with campaign and compliance tools; Athliance serves disclosure workflows. Naming them is context, not a claim — Endorsely has no integration, partnership, or access arrangement with any of them.",
+      "Endorsely is not trying to have the largest athlete directory. The intended difference is focused execution: affordable, repeatable campaigns for local fitness, wellness and youth-sports businesses, delivered by small groups of college athletes and judged against customer actions, starting in one category in one campus market.",
+      "The honest framing is that Endorsely is complementary. Whatever a school or an athlete already uses stays where it is; Endorsely originates and runs the campaign and hands over organised information at the end.",
     ],
   },
   {
@@ -83,11 +101,19 @@ export const faq: FaqItem[] = [
     ],
   },
   {
+    id: "what-exists",
+    question: "What actually exists today?",
+    answer: [
+      "The complete list: we have developed the concept, researched competitors, and outlined the business and pilot models. That is it.",
+      "Customer interviews, paying clients, partnerships and a working platform are all planned milestones rather than achievements. No campaign has run, no merchant has paid, no athlete is signed, and no school has agreed to anything. Everything described on this site as a capability is described as intended.",
+    ],
+  },
+  {
     id: "pilot",
     question: "How can I participate in the pilot?",
     answer: [
       "Tell us which side you are on — business, athlete, or school and partner — and what you would want out of it. Nothing about an inquiry is a commitment, and an inquiry is not a letter of intent.",
-      "Endorsely is pre-launch. The first campus is not confirmed, so early conversations are about shaping a small number of repeatable campaign formats rather than booking work.",
+      "The first pilot market is Austin, Texas. No campus is confirmed and no school has agreed to anything, so early conversations are about shaping a small number of repeatable campaign formats rather than booking work.",
     ],
   },
 ];

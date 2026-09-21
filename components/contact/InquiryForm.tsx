@@ -30,11 +30,12 @@ type Values = Record<string, string | string[]>;
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+/** Maps a planner total onto the bands in `inquiryForms.business`. */
 function budgetRangeFor(total: number): string {
-  if (total < 500) return "under-500";
-  if (total <= 1000) return "500-1000";
-  if (total <= 2500) return "1000-2500";
-  return "2500-plus";
+  if (total < 1000) return "under-1000";
+  if (total <= 2000) return "1000-2000";
+  if (total <= 5000) return "2000-5000";
+  return "5000-plus";
 }
 
 function emptyValues(type: InquiryType, handoff: PlannerHandoff | null): Values {

@@ -1,13 +1,18 @@
 /**
  * Budget allocation — pure functions only.
  *
+ * The model: a single all-in campaign budget. 20% is the Endorsely management
+ * fee; the remaining 80% is campaign spending — included delivery costs first,
+ * then athlete compensation. Athlete money is pass-through, not platform revenue.
+ *
  * Rules that must always hold:
- *   total = athletePool + otherIncludedCosts + planningAndCoordination + unallocated
+ *   total = athletePool + otherIncludedCosts + managementFee + unallocated
+ *   managementFee is always 20% of total, never scaled by anything else
  *   perAthlete is derived from athletePool, never from total
  *   everything is whole dollars, so what renders always sums
  */
 
-import { prototypeFeeAssumptions as fees } from "@/lib/data/fees";
+import { feeModel as fees, managementFeeFor } from "@/lib/data/fees";
 import type { ActivityId } from "@/lib/data/packages";
 
 export type BudgetLine = {
@@ -18,16 +23,18 @@ export type BudgetLine = {
 
 export type BudgetAllocation = {
   total: number;
+  /** The 80% of the budget that is campaign spending, before it is split up. */
+  campaignSpend: number;
   athletePool: number;
-  planningAndCoordination: number;
+  managementFee: number;
   otherIncludedCosts: BudgetLine[];
   otherIncludedTotal: number;
   /** Rounding remainder kept visible so the column always adds up. */
   unallocated: number;
   athleteCount: number;
   perAthlete: number;
-  /** True when the total sits under the internal sustainability hypothesis. */
-  belowSustainabilityHypothesis: boolean;
+  /** True when the total sits under the proposed minimum campaign budget. */
+  belowMinimumBudget: boolean;
   /** True when the pool cannot fund the requested athlete count sensibly. */
   athleteCountReduced: boolean;
   /** Athlete count the allocation actually funds. */
@@ -73,17 +80,12 @@ export function allocateBudget(input: {
   const total = Math.max(0, round(input.total));
   const requestedAthletes = Math.max(1, Math.round(input.athleteCount));
 
-  const coordination = Math.min(
-    fees.coordinationMaximum,
-    Math.max(
-      Math.min(fees.coordinationMinimum, total),
-      round(total * fees.coordinationRate),
-    ),
-  );
+  const managementFee = managementFeeFor(total);
+  const campaignSpend = Math.max(0, total - managementFee);
 
   const otherCandidates = otherCostsFor(input.activities);
   const otherIncludedCosts: BudgetLine[] = [];
-  let remaining = Math.max(0, total - coordination);
+  let remaining = campaignSpend;
 
   // Only include a materials line if the budget can actually carry it.
   for (const line of otherCandidates) {
@@ -113,12 +115,12 @@ export function allocateBudget(input: {
     {
       label: `Athlete compensation (${affordableAthletes} × $${perAthlete.toLocaleString("en-US")})`,
       amount: perAthlete * affordableAthletes,
-      note: "Paid to participating athletes under the campaign agreement.",
+      note: "Paid to participating athletes under the campaign agreement. Campaign spending, not Endorsely revenue.",
     },
     ...otherIncludedCosts,
     {
-      label: "Endorsely planning and coordination",
-      amount: coordination,
+      label: `Endorsely management fee (${Math.round(fees.managementFeeRate * 100)}%)`,
+      amount: managementFee,
       note: "Campaign design, athlete coordination, documentation preparation, reporting.",
     },
   ];
@@ -133,14 +135,15 @@ export function allocateBudget(input: {
 
   return {
     total,
+    campaignSpend,
     athletePool,
-    planningAndCoordination: coordination,
+    managementFee,
     otherIncludedCosts,
     otherIncludedTotal,
     unallocated,
     athleteCount: requestedAthletes,
     perAthlete,
-    belowSustainabilityHypothesis: total < fees.sustainabilityHypothesisTotal,
+    belowMinimumBudget: total < fees.minimumCampaignBudget,
     athleteCountReduced: affordableAthletes < requestedAthletes,
     fundedAthleteCount: affordableAthletes,
     fundsAnyAthlete: athletePool >= fees.athleteAllocationFloor,
@@ -155,4 +158,4 @@ export function allocationBalances(allocation: BudgetAllocation): boolean {
 }
 
 export const budgetDisclosure =
-  "Illustrative allocation. Final scope and pricing require a proposal.";
+  "Illustrative allocation of a proposed fee model. Final scope and pricing require a proposal.";

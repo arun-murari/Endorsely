@@ -21,6 +21,7 @@ import {
   type ObjectiveId,
   type PackageSlug,
 } from "@/lib/data/packages";
+import { feeSplitSummary, pricingDisclosure } from "@/lib/data/fees";
 import {
   allocateBudget,
   type BudgetAllocation,
@@ -66,7 +67,7 @@ export const defaultPlannerInput: PlannerInput = {
   category: "gym-fitness",
   objective: "membership-inquiries",
   area: "",
-  budget: 1250,
+  budget: 1500,
   packageSlug: "auto",
   activities: ["short-form-content"],
   timeline: "next-month",
@@ -361,10 +362,14 @@ export function serialiseBrief(brief: CampaignBrief): string {
   brief.budget.lines.forEach((line) =>
     lines.push(`  ${line.label}: $${line.amount.toLocaleString("en-US")}`),
   );
-  lines.push(`  TOTAL: $${brief.budget.total.toLocaleString("en-US")}`);
+  lines.push(
+    `  ALL-IN CAMPAIGN BUDGET: $${brief.budget.total.toLocaleString("en-US")}`,
+  );
   lines.push(
     `  Per athlete (from the compensation pool): $${brief.budget.perAthlete.toLocaleString("en-US")}`,
   );
+  lines.push(`  ${feeSplitSummary}`);
+  lines.push(`  ${pricingDisclosure}`);
   lines.push("  Illustrative allocation. Final scope and pricing require a proposal.");
   lines.push("");
   lines.push("DOCUMENTATION CHECKLIST");

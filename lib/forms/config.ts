@@ -104,12 +104,12 @@ export const inquiryForms: Record<InquiryType, InquiryForm> = {
         label: "Rough budget range you are considering",
         kind: "select",
         helper:
-          "A range helps us shape scope. Pricing is not settled, so this is not a quote.",
+          "All-in campaign budget. The proposed minimum is $1,000; below that we would talk about a smaller pilot. Pricing is not settled, so this is not a quote.",
         options: [
-          { value: "under-500", label: "Under $500" },
-          { value: "500-1000", label: "$500 – $1,000" },
-          { value: "1000-2500", label: "$1,000 – $2,500" },
-          { value: "2500-plus", label: "$2,500 +" },
+          { value: "under-1000", label: "Under $1,000 — smaller pilot" },
+          { value: "1000-2000", label: "$1,000 – $2,000" },
+          { value: "2000-5000", label: "$2,000 – $5,000" },
+          { value: "5000-plus", label: "$5,000 +" },
           { value: "unsure", label: "Not sure yet" },
         ],
       },

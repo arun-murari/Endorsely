@@ -21,6 +21,7 @@ import {
   type ObjectiveId,
   type PackageSlug,
 } from "@/lib/data/packages";
+import { feeModel, pricingDisclosure } from "@/lib/data/fees";
 import {
   allocationBalances,
   budgetDisclosure,
@@ -36,7 +37,7 @@ import {
 
 const usd = (amount: number) => `$${amount.toLocaleString("en-US")}`;
 
-const quickBudgets = [750, 1000, 1250, 2000];
+const quickBudgets = [750, 1000, 1500, 2000];
 
 function initialInput(preselected: PackageSlug | null): PlannerInput {
   if (!preselected) return defaultPlannerInput;
@@ -214,6 +215,11 @@ export function CampaignPlanner({
                   </button>
                 ))}
               </div>
+              <p className="mt-2.5 text-[0.8125rem] leading-snug text-neutral-600">
+                One all-in figure. {usd(feeModel.minimumCampaignBudget)} is the
+                proposed minimum campaign budget — enter less and the brief says
+                so rather than pretending the numbers work.
+              </p>
             </div>
 
             <div className="border-t border-ink/25 py-5">
@@ -445,7 +451,7 @@ export function CampaignPlanner({
               {balances ? (
                 <DataRow
                   emphasis
-                  label="Illustrative total"
+                  label="All-in campaign budget"
                   value={usd(budget.total)}
                 />
               ) : (
@@ -455,30 +461,35 @@ export function CampaignPlanner({
                 </p>
               )}
             </div>
-            <p className="mt-3 text-[0.8125rem] leading-snug text-neutral-600">
-              Athlete compensation pool {usd(budget.athletePool)} ÷{" "}
+            <p className="measure mt-3 text-[0.875rem] leading-snug text-ink-2">
+              One budget, split by a fixed rule: {usd(budget.managementFee)} is the
+              Endorsely management fee and {usd(budget.campaignSpend)} is campaign
+              spending. Athlete compensation is campaign money, not Endorsely
+              revenue. The pool of {usd(budget.athletePool)} ÷{" "}
               {budget.fundedAthleteCount} athlete
               {budget.fundedAthleteCount === 1 ? "" : "s"} ={" "}
               <span className="font-mono tabular-nums">
                 {usd(budget.perAthlete)}
               </span>{" "}
-              each. Per-athlete amounts come from the compensation pool, not from
-              the total. {budgetDisclosure}
+              each — per-athlete amounts come from the pool, not from the total.
+            </p>
+            <p className="mt-2 text-[0.8125rem] leading-snug text-neutral-600">
+              {pricingDisclosure} {budgetDisclosure}
             </p>
 
-            {budget.belowSustainabilityHypothesis ? (
+            {budget.belowMinimumBudget ? (
               <div className="mt-6 border-l-2 border-ink/40 bg-paper-tint p-4">
                 <p className="display-tight text-[1.05rem]">
                   {budget.fundsAnyAthlete
-                    ? "This is below where we think a multi-athlete campaign works"
+                    ? `Below the proposed ${usd(feeModel.minimumCampaignBudget)} minimum campaign budget`
                     : "This budget is too small to allocate honestly"}
                 </p>
                 <p className="measure mt-2 text-[0.875rem] leading-snug text-ink-2">
                   {budget.fundsAnyAthlete
                     ? `At ${usd(budget.total)} the allocation above funds ${budget.fundedAthleteCount} athlete${
                         budget.fundedAthleteCount === 1 ? "" : "s"
-                      } and a content-led scope. That can still be worth doing — one athlete, fewer deliverables, one offer code — but a coordinated group campaign around $1,000 or more is the level we are planning around for sustainability. That is a planning hypothesis, not a minimum spend or a promise.`
-                    : "Below a few hundred dollars there is not enough left after coordination to pay an athlete a sensible amount, so we would rather talk than print an allocation that does not mean anything."}
+                      } and a content-led scope. That can still be worth doing — one athlete, fewer deliverables, one offer code — but the proposed minimum for a coordinated group campaign is ${usd(feeModel.minimumCampaignBudget)}, because below it the management fee does not cover the work of running one. That minimum is a proposal we intend to test, not a settled price.`
+                    : `Below a few hundred dollars there is not enough left after the management fee to pay an athlete a sensible amount, so we would rather talk than print an allocation that does not mean anything. The proposed minimum campaign budget is ${usd(feeModel.minimumCampaignBudget)}.`}
                 </p>
                 <div className="mt-4">
                   <CtaLink href="/contact?type=business" variant="secondary">

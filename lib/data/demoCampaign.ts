@@ -112,7 +112,7 @@ export const demoCampaign = {
         "1 studio visit for capture",
         "Offer code RG-LANE1",
       ],
-      compensation: 350,
+      compensation: 500,
     },
     {
       number: "02",
@@ -120,7 +120,7 @@ export const demoCampaign = {
       role: "Mobility and recovery demonstrator",
       contribution: "Content only",
       deliverables: ["2 short-form videos", "1 photo set", "Offer code RG-LANE2"],
-      compensation: 350,
+      compensation: 500,
     },
     {
       number: "03",
@@ -128,7 +128,7 @@ export const demoCampaign = {
       role: "Off-season strength storyteller",
       contribution: "Content only",
       deliverables: ["2 short-form videos", "1 story series", "Offer code RG-LANE3"],
-      compensation: 350,
+      compensation: 500,
     },
   ] satisfies DemoAthlete[],
   deliverables: [
@@ -203,14 +203,18 @@ export const demoCampaign = {
     },
   ] satisfies DemoScheduleWeek[],
   budget: {
-    /** athletePool must equal the sum of athlete compensation below. */
-    athletePool: 1050,
-    planningAndCoordination: 250,
+    /**
+     * One all-in budget of $2,000 — the worked example of the proposed fee
+     * model. 20% ($400) is the Endorsely management fee; the remaining $1,600
+     * is campaign spending: $1,500 of athlete compensation (3 × $500) and a
+     * $100 appearance materials allowance. `demoBudgetTotals` recomputes all of
+     * it from the parts, so nothing below can silently drift.
+     */
+    managementFee: 400,
     otherIncludedCosts: [
-      { label: "Appearance materials allowance", amount: 60 },
+      { label: "Appearance materials allowance", amount: 100 },
     ],
-    total: 1360,
-    note: "Illustrative allocation for a sample campaign. Final scope and pricing require a proposal.",
+    note: "Illustrative allocation of a proposed fee model for a sample campaign. Final scope and pricing require a proposal.",
   },
   measurement: {
     primaryAction: "Two-week trial sign-ups and membership inquiries",
@@ -372,7 +376,12 @@ export const demoCampaign = {
 
 export type DemoCampaign = typeof demoCampaign;
 
-/** Arithmetic guard: the displayed total always derives from the parts. */
+/**
+ * Arithmetic guard: the displayed total always derives from the parts, and the
+ * management fee always lands on the rate in `feeModel`. If someone edits an
+ * athlete's compensation without editing the fee, `feeRatePercent` stops
+ * reading 20 and the discrepancy is visible rather than silent.
+ */
 export const demoBudgetTotals = (() => {
   const athletePool = demoCampaign.athletes.reduce(
     (sum, athlete) => sum + athlete.compensation,
@@ -382,12 +391,17 @@ export const demoBudgetTotals = (() => {
     (sum, item) => sum + item.amount,
     0,
   );
+  const managementFee = demoCampaign.budget.managementFee;
+  const total = athletePool + other + managementFee;
   return {
     athletePool,
     perAthlete: athletePool / demoCampaign.athletes.length,
     otherIncludedCosts: other,
-    planningAndCoordination: demoCampaign.budget.planningAndCoordination,
-    total: athletePool + other + demoCampaign.budget.planningAndCoordination,
+    managementFee,
+    /** Everything in the budget that is not the fee: athletes plus delivery. */
+    campaignSpend: athletePool + other,
+    feeRatePercent: total > 0 ? Math.round((managementFee / total) * 100) : 0,
+    total,
   };
 })();
 

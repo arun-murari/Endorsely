@@ -5,7 +5,11 @@
  */
 
 export type PilotMarket = {
-  /** Flip to true only when a campus partnership is genuinely confirmed. */
+  /**
+   * Flip to true only when a campus partnership is genuinely confirmed. A named
+   * `city` does NOT imply a confirmed campus: the pilot city can be settled
+   * while every school in it remains a stranger.
+   */
   confirmed: boolean;
   campus: string | null;
   city: string | null;
@@ -38,7 +42,7 @@ export const siteConfig = {
   pilotMarket: {
     confirmed: false,
     campus: null,
-    city: null,
+    city: "Austin, Texas",
   } satisfies PilotMarket,
   primaryNav: [
     { label: "Campaigns", href: "/campaigns" },
@@ -80,15 +84,26 @@ export const siteConfig = {
     },
   ] satisfies { heading: string; links: NavLink[] }[],
   featureFlags: {
-    /** Fee assumptions are prototype-only; never render them as a price list. */
-    showPrototypeFeeAssumptions: false,
+    /**
+     * The fee model in `lib/data/fees.ts` is a proposal, not a rate card. The
+     * planner may show how a budget splits; the site must never publish pricing
+     * tiers, a subscription, or institutional licensing terms.
+     */
+    showPublicPricingTiers: false,
   },
 } as const;
 
 /**
- * Pilot-market phrasing helper. While `pilotMarket.confirmed` is false the site
- * must not name a campus or city, so every surface asks for the phrase it needs
- * instead of hardcoding one.
+ * Pilot-market phrasing helper. Three states, and every surface asks for the
+ * phrase it needs instead of hardcoding one:
+ *
+ *   1. nothing known        — campus-agnostic language
+ *   2. city known only      — name the city, say the campus is unconfirmed
+ *   3. campus confirmed     — name the campus
+ *
+ * State 2 is where the site sits today. Naming a city is a statement about
+ * where we intend to work; it is never a claim about a school in that city, so
+ * no phrase below pairs the city with an institution.
  */
 export function pilotMarketPhrase(
   variant: "headline" | "sentence" | "inline" | "campusLabel" = "sentence",
@@ -96,6 +111,19 @@ export function pilotMarketPhrase(
   const { confirmed, campus, city } = siteConfig.pilotMarket;
 
   if (!confirmed || !campus) {
+    if (city) {
+      switch (variant) {
+        case "headline":
+          return `Start in ${city}`;
+        case "inline":
+          return `in ${city}, one campus at a time`;
+        case "campusLabel":
+          return `First market — ${city} · campus to be confirmed`;
+        default:
+          return `Our first pilot market is ${city}, working one campus at a time. No campus is confirmed yet and no school has agreed to anything.`;
+      }
+    }
+
     switch (variant) {
       case "headline":
         return "Start with one campus";

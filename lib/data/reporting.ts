@@ -23,17 +23,18 @@ export const sampleReport = {
   campaignName: "Membership Drive · four weeks",
   merchant: "Rivergate Strength Co. (fictional sample business)",
   window: "Weeks 01–04",
-  spend: 900,
+  /** Matches the shared demo campaign's all-in budget so the two never diverge. */
+  spend: 2000,
   redemptions: 63,
   attributedNewCustomers: 28,
-  trackedRevenue: 2450,
+  trackedRevenue: 3400,
   /** Named precisely. This is not ROI and not profit. */
   ratioLabel: "Tracked revenue ÷ campaign spend",
   lines: [
     {
       label: "Campaign spend",
-      value: "$900",
-      source: "Agreed campaign budget for the period",
+      value: "$2,000",
+      source: "Agreed all-in campaign budget for the period, management fee included",
     },
     {
       label: "Offer redemptions",
@@ -47,7 +48,7 @@ export const sampleReport = {
     },
     {
       label: "Tracked revenue",
-      value: "$2,450",
+      value: "$3,400",
       source: "Merchant-reported sales tied to those sign-ups",
       emphasis: true,
     },
@@ -63,6 +64,14 @@ export const sampleReport = {
 export const sampleReportRatio = `${(
   sampleReport.trackedRevenue / sampleReport.spend
 ).toFixed(2)}×`;
+
+const usd = (amount: number) => `$${amount.toLocaleString("en-US")}`;
+
+export const sampleReportRatioNote = `${usd(
+  sampleReport.trackedRevenue,
+)} of tracked revenue divided by ${usd(
+  sampleReport.spend,
+)} of campaign spend. Revenue, not profit — and not a measure of what the campaign caused.`;
 
 export const measurementSources: MeasurementSource[] = [
   {

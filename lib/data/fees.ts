@@ -1,52 +1,64 @@
 /**
- * PROTOTYPE ASSUMPTIONS — NOT APPROVED PRICING.
+ * PROPOSED PRICING ASSUMPTIONS — NOT APPROVED, NOT TESTED WITH CUSTOMERS.
  *
- * Every number in this file is an internal planning assumption used to make the
- * illustrative campaign planner arithmetic consistent. None of it has been
- * approved, tested with customers, or reviewed. It must never be presented on
- * the site as a price list, a quote, or a rate card. Public calls to action are
- * always "discuss a pilot" / "request a campaign proposal".
+ * The model: a merchant agrees one all-in campaign budget. Endorsely takes a
+ * management fee of 20% of that budget; the remaining 80% is campaign spending —
+ * athlete compensation plus any explicitly included delivery costs. Athlete
+ * compensation is pass-through campaign money, not platform revenue.
  *
- * Revenue hypotheses under consideration (unresolved, deliberately not public):
- *   - per-campaign coordination fee paid by the merchant
- *   - managed-service fee for businesses that want campaigns run for them
- *   - possible recurring subscription for repeat campaign programmes
- *   - institutional licensing for schools/partners
- * Earlier internal proposals floated annual figures in different ranges. None
- * are settled, so none appear anywhere in the UI.
+ * Worked example: a $2,000 campaign = $1,600 to athletes and delivery,
+ * $400 Endorsely management fee.
+ *
+ * This is a proposal. Willingness to pay has not been tested, so the site says
+ * so next to every figure and publishes no pricing tiers, rate card, or quote.
+ * Public calls to action stay "discuss a pilot" / "request a campaign proposal".
+ *
+ * Unvalidated revenue possibilities, deliberately absent from the UI:
+ *   - a recurring reporting subscription (a $149/month figure has been floated
+ *     internally; no demand evidence exists, so it is not a product)
+ *   - institutional licensing for schools or collectives (scope, price and what
+ *     a school would receive are all undecided, and would require demand
+ *     validation before being offered)
+ * Neither is a published price and neither should be rendered anywhere.
+ *
+ * Internal P&L scenarios — overhead, campaign-volume cases, break-even, margin,
+ * per-campaign delivery cost — live in the business plan, not in this repo. The
+ * site shows no projected revenue or profit.
  */
 
-export const prototypeFeeAssumptions = {
+export const feeModel = {
+  /** Endorsely management fee, taken within the agreed campaign budget. */
+  managementFeeRate: 0.2,
   /**
-   * Share of a campaign budget assumed to cover Endorsely planning and
-   * coordination in prototype allocations. 0.20 keeps the worked example clean:
-   * a $1,250 total → $250 coordination + $1,000 athlete compensation pool.
+   * Proposed minimum campaign budget. Below this the site stops printing an
+   * allocation and points to a conversation about a smaller pilot instead.
+   * A minimum budget, not a minimum fee.
    */
-  coordinationRate: 0.2,
-  /** Floor so very small budgets do not imply unpaid coordination work. */
-  coordinationMinimum: 150,
-  /** Ceiling so large budgets do not scale the fee indefinitely. */
-  coordinationMaximum: 900,
+  minimumCampaignBudget: 1000,
   /** Materials allowance assumed when a campaign includes an in-person clinic. */
   clinicMaterialsAllowance: 120,
   /** Materials allowance assumed for a store or studio appearance. */
-  appearanceMaterialsAllowance: 60,
-  /**
-   * Planning hypothesis only: total budgets around this level are where the
-   * team currently believes a multi-athlete campaign is sustainable to run.
-   * This is not a minimum spend, a promise, or a published requirement.
-   */
-  sustainabilityHypothesisTotal: 1000,
+  appearanceMaterialsAllowance: 100,
   /** Assumed floor for a single athlete's compensation in an allocation. */
   athleteAllocationFloor: 150,
-  /** Worked prototype example referenced in copy. */
+  /** Worked example referenced in copy, derived from the rule above. */
   workedExample: {
-    athleteCompensationPool: 1000,
-    planningAndCoordination: 250,
-    total: 1250,
-    athleteCount: 4,
-    perAthlete: 250,
+    total: 2000,
+    managementFee: 400,
+    athleteAndDelivery: 1600,
   },
 } as const;
 
-export type PrototypeFeeAssumptions = typeof prototypeFeeAssumptions;
+export type FeeModel = typeof feeModel;
+
+/** Fee on a budget, in whole dollars. Pure. */
+export const managementFeeFor = (total: number): number =>
+  Math.round(Math.max(0, total) * feeModel.managementFeeRate);
+
+/** The honest label that must accompany any fee figure shown to a visitor. */
+export const pricingDisclosure =
+  "Proposed pricing. We will test willingness to pay before finalizing.";
+
+/** One-line description of the split, for copy that needs it inline. */
+export const feeSplitSummary =
+  "One all-in campaign budget: 20% is the Endorsely management fee, 80% is campaign spending — athlete compensation and any included delivery costs.";
