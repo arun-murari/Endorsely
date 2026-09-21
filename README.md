@@ -136,3 +136,40 @@ does not receive mail. Replace it before any real traffic reaches the site.
    pages rather than publishing fabricated ones.
 8. **Claim review** — a final pass confirming every capability on the site is
    labelled correctly as implemented, proposed, or illustrative.
+
+## Deployment (GitHub Pages)
+
+The site is a static export deployed to GitHub Pages at
+**https://arun-murari.github.io/Endorsely/**.
+
+`.github/workflows/deploy.yml` runs on every push to `main` (and on manual
+`workflow_dispatch`). It builds with Node 22, exports to `out/`, adds
+`out/.nojekyll` so Pages serves the `_next/` directory, and publishes the folder
+with `actions/deploy-pages`. Pages is configured with GitHub Actions as its
+source — there is no `gh-pages` branch, and `out/` is never committed.
+
+### `NEXT_PUBLIC_BASE_PATH`
+
+Pages serves this repo from the `/Endorsely/` subpath, not a domain root, so
+every asset and internal link needs that prefix. `next.config.ts` reads it from
+`NEXT_PUBLIC_BASE_PATH` and applies it as both `basePath` and `assetPrefix`:
+
+```bash
+NEXT_PUBLIC_BASE_PATH=/Endorsely npm run build   # what CI runs
+npm run build                                    # root-relative, for local checks
+```
+
+The variable is unset locally so `npm run dev` keeps working at
+`http://localhost:3000` without the prefix; only the workflow sets it. Build
+without it and the deployed page will load HTML but request its CSS and JS from
+`/_next/...`, which 404s on Pages.
+
+### Consequences of static export
+
+`output: 'export'` means there is no server at runtime. Server Actions, Route
+Handlers that read the request, `cookies()`, `headers()`, middleware, ISR, and
+`next/image` optimization are unavailable — `images.unoptimized` is on for that
+reason. The site is a pure marketing site today, so nothing depends on them, but
+adding any server-side feature means moving off Pages to a host that runs Node
+(Vercel, or a container). `trailingSlash: true` is set so Pages resolves
+directory-style URLs such as `/Endorsely/campaigns/` to `campaigns/index.html`.
