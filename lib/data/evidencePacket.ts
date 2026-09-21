@@ -157,14 +157,6 @@ export const evidencePacket: PacketGroup[] = [
         note: "Policy sets are supplied to MatchPoint. MatchPoint does not author or interpret institutional policy.",
       },
       {
-        label: "Potential issues",
-        value: demoCampaign.potentialIssues
-          .map((issue) => `${issue.ruleId}: ${issue.summary}`)
-          .join(" | "),
-        status: "provided",
-        note: "Potential issue — requires review. Not a compliance determination.",
-      },
-      {
         label: "Outstanding questions",
         value: demoCampaign.outstandingQuestions.join(" "),
         status: "pending",
