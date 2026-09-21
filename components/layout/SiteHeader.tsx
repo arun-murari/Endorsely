@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Wordmark } from "@/components/brand/Wordmark";
 import { CtaLink } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Marks";
@@ -10,12 +10,12 @@ import { siteConfig } from "@/lib/site.config";
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
+  const [nav, setNav] = useState({ open: false, path: pathname });
 
-  // Close the mobile disclosure whenever the route changes.
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
+  // Derive the disclosure from the current route: any navigation closes it,
+  // including browser back/forward, without an effect.
+  const open = nav.path === pathname && nav.open;
+  const setOpen = (value: boolean) => setNav({ open: value, path: pathname });
 
   const isActive = (href: string) => {
     const base = href.split("#")[0];
@@ -81,7 +81,7 @@ export function SiteHeader() {
 
           <button
             type="button"
-            onClick={() => setOpen((value) => !value)}
+            onClick={() => setOpen(!open)}
             aria-expanded={open}
             aria-controls="mobile-nav"
             className="ml-auto inline-flex items-center gap-2 border border-ink px-3 py-2 lg:hidden"
