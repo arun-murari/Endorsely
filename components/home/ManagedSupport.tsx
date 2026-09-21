@@ -50,7 +50,7 @@ export function ManagedSupport() {
           <div className="mt-6 flex flex-col items-start gap-3">
             <ClaimLabel kind="proposed" />
             <p className="measure text-[0.8125rem] leading-snug text-neutral-600">
-              This is the service MatchPoint intends to provide. There is no
+              This is the service Endorsely intends to provide. There is no
               staffed operations team behind it today, and none of it is automated
               yet.
             </p>

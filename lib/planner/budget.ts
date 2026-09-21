@@ -117,7 +117,7 @@ export function allocateBudget(input: {
     },
     ...otherIncludedCosts,
     {
-      label: "MatchPoint planning and coordination",
+      label: "Endorsely planning and coordination",
       amount: coordination,
       note: "Campaign design, athlete coordination, documentation preparation, reporting.",
     },

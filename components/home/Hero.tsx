@@ -27,7 +27,7 @@ export function Hero() {
           </DisplayHeading>
 
           <p className="measure mt-7 text-lg leading-relaxed text-ink sm:text-xl">
-            Plan coordinated campaigns with college athletes. MatchPoint helps you
+            Plan coordinated campaigns with college athletes. Endorsely helps you
             assemble the athlete group, manage deliverables, prepare the paperwork,
             and track the customer actions that matter.
           </p>

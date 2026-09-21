@@ -186,7 +186,7 @@ export const inquiryForms: Record<InquiryType, InquiryForm> = {
     audience:
       "Athletic compliance offices, athletic departments, regional collectives, and institutional partners.",
     expectation:
-      "We would reply to walk through the proposed workflow and the sample packet. MatchPoint is pre-launch and has no institutional relationships, permissions, or integrations.",
+      "We would reply to walk through the proposed workflow and the sample packet. Endorsely is pre-launch and has no institutional relationships, permissions, or integrations.",
     submitLabel: "Start a partnership conversation",
     fields: [
       nameField,

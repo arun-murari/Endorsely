@@ -20,19 +20,19 @@ export type NavLink = {
 export type InquiryType = "business" | "athlete" | "school";
 
 export const siteConfig = {
-  name: "MatchPoint",
+  name: "Endorsely",
   /** Short positioning line, used in metadata and the footer. */
   positioning:
-    "MatchPoint helps local fitness, wellness, and youth-sports businesses run measurable marketing campaigns with college athletes.",
+    "Endorsely helps local fitness, wellness, and youth-sports businesses run measurable marketing campaigns with college athletes.",
   promise: "Make local NIL perform.",
   nilDefinition: "name, image, and likeness",
   /**
    * Placeholder address. No inbox exists behind it — see README before launch.
    */
-  contactEmail: "hello@matchpoint.example",
+  contactEmail: "hello@endorsely.example",
   status: {
     stage: "pre-launch" as const,
-    line: "MatchPoint is pre-launch. The capabilities described here are proposed, and sample data is fictional.",
+    line: "Endorsely is pre-launch. The capabilities described here are proposed, and sample data is fictional.",
     shortLine: "Pre-launch. Proposed capabilities, fictional sample data.",
   },
   pilotMarket: {

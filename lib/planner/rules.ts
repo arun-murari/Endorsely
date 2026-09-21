@@ -5,7 +5,7 @@
  * illustrative campaign brief, using the example campaign formats.
  *
  * What they are NOT: a query against a real athlete marketplace, a live
- * availability check, a model trained on MatchPoint performance history, a
+ * availability check, a model trained on Endorsely performance history, a
  * prediction of customer acquisition, an eligibility determination, an approval
  * of compensation, or a check against any school's unpublished policy.
  */
@@ -328,12 +328,12 @@ export const activityLabel = (id: ActivityId): string =>
   activityOptions.find((item) => item.id === id)?.label ?? id;
 
 export const plannerDisclosure =
-  "This preview applies simple planning rules to what you entered. It does not check athlete availability, use MatchPoint performance history, predict how many customers you will get, determine anyone's eligibility, approve compensation, or check a school's policies.";
+  "This preview applies simple planning rules to what you entered. It does not check athlete availability, use Endorsely performance history, predict how many customers you will get, determine anyone's eligibility, approve compensation, or check a school's policies.";
 
 /** Plain-text brief for the copy button and the contact handoff. */
 export function serialiseBrief(brief: CampaignBrief): string {
   const lines: string[] = [];
-  lines.push("MATCHPOINT — ILLUSTRATIVE CAMPAIGN BRIEF");
+  lines.push("ENDORSELY — ILLUSTRATIVE CAMPAIGN BRIEF");
   lines.push("(Planning preview. Not a quote, booking, or approval.)");
   lines.push("");
   lines.push(`Business type: ${brief.categoryLabel}`);

@@ -1,5 +1,5 @@
 /**
- * Proposed network concepts. These describe the KIND of athlete group MatchPoint
+ * Proposed network concepts. These describe the KIND of athlete group Endorsely
  * intends to assemble — they are not active rosters, signed groups, or
  * eligibility guarantees. Members are role archetypes only: no names, no
  * photographs, no handles, no identifiable individuals.

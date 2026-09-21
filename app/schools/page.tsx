@@ -59,7 +59,7 @@ const value = [
 ];
 
 const division = {
-  matchpoint: [
+  endorsely: [
     "Merchant-facing campaign planning and scoping",
     "Athlete group assembly and coordination",
     "Deliverable tracking and completion evidence",
@@ -115,7 +115,7 @@ export default function SchoolsPage() {
               Better-organized deals. Your existing process.
             </DisplayHeading>
             <Lede className="mt-6 text-ink">
-              MatchPoint packages local NIL —{" "}
+              Endorsely packages local NIL —{" "}
               <strong className="font-semibold">name, image, and likeness</strong> —
               campaigns for businesses near a campus: it plans them, coordinates
               the athletes, measures the business result, and assembles the
@@ -172,7 +172,7 @@ export default function SchoolsPage() {
             </DisplayHeading>
           </div>
           <Lede className="max-w-md text-[0.9375rem] text-ink-2">
-            Left column: what tends to arrive. Right column: what MatchPoint is
+            Left column: what tends to arrive. Right column: what Endorsely is
             designed to send instead.
           </Lede>
         </div>
@@ -200,17 +200,17 @@ export default function SchoolsPage() {
               We prepare. You decide.
             </DisplayHeading>
             <Lede className="mt-6 text-ink-2">
-              MatchPoint does not submit on a school&apos;s behalf, does not
+              Endorsely does not submit on a school&apos;s behalf, does not
               determine eligibility, does not approve campaigns, and does not
               control any institutional process.
             </Lede>
             <div className="mt-8 grid gap-8 sm:grid-cols-2">
               <div>
                 <h3 className="mono-label border-b-2 border-lime pb-2 text-ink-2">
-                  MatchPoint does
+                  Endorsely does
                 </h3>
                 <ul>
-                  {division.matchpoint.map((item) => (
+                  {division.endorsely.map((item) => (
                     <li
                       key={item}
                       className="border-b border-rule py-2.5 text-[0.9375rem] leading-snug text-ink"

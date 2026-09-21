@@ -1,10 +1,10 @@
-# MatchPoint — marketing site
+# Endorsely — marketing site
 
-Marketing site and product concept demo for **MatchPoint**: a campaign-first
+Marketing site and product concept demo for **Endorsely**: a campaign-first
 platform that helps local fitness, wellness, and youth-sports businesses run
 measurable marketing campaigns with college athletes.
 
-MatchPoint is **pre-launch**. Everything on this site is either a description of
+Endorsely is **pre-launch**. Everything on this site is either a description of
 an intended capability or clearly labelled illustrative/fictional sample data.
 There are no customers, athletes, school relationships, integrations, results, or
 prices behind it.
@@ -91,7 +91,7 @@ that `NEXT_PUBLIC_*` variables are visible in the browser — put no secrets the
 use a server route or a form service that accepts public posts with its own
 abuse protection.
 
-`hello@matchpoint.example` in `lib/site.config.ts` is a **placeholder address** and
+`hello@endorsely.example` in `lib/site.config.ts` is a **placeholder address** and
 does not receive mail. Replace it before any real traffic reaches the site.
 
 ## Remaining configuration (all currently absent)
@@ -112,7 +112,7 @@ does not receive mail. Replace it before any real traffic reaches the site.
 - **Verification sources** — nothing in the packet is independently verified;
   identity, compensation, payment and disclosure fields read as "provided". A real
   verification source would be needed before any field could read "verified".
-- **Payments** — MatchPoint holds and processes nothing. Any payment element is
+- **Payments** — Endorsely holds and processes nothing. Any payment element is
   fictional recordkeeping or an explicitly proposed future workflow.
 - **Sitemap, robots, and OG images** — not configured.
 

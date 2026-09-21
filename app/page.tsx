@@ -13,7 +13,7 @@ import { SchoolWorkflow } from "@/components/home/SchoolWorkflow";
 import { siteConfig } from "@/lib/site.config";
 
 const description =
-  "MatchPoint helps local fitness, wellness, and youth-sports businesses run measurable marketing campaigns with college athletes. Plan the campaign, coordinate the athlete group, prepare the documentation, and track customer actions.";
+  "Endorsely helps local fitness, wellness, and youth-sports businesses run measurable marketing campaigns with college athletes. Plan the campaign, coordinate the athlete group, prepare the documentation, and track customer actions.";
 
 export const metadata: Metadata = {
   title: `${siteConfig.name} — Make local NIL perform.`,

@@ -167,8 +167,8 @@ export function HandoffDiagram({ className = "" }: { className?: string }) {
     >
       <g fontFamily="var(--font-mono)" fontSize="11" letterSpacing="1.5">
         {[
-          { x: 8, label: "01", title: "CAMPAIGN BRIEF", sub: "MatchPoint + merchant" },
-          { x: 224, label: "02", title: "EVIDENCE PACKET", sub: "MatchPoint prepares" },
+          { x: 8, label: "01", title: "CAMPAIGN BRIEF", sub: "Endorsely + merchant" },
+          { x: 224, label: "02", title: "EVIDENCE PACKET", sub: "Endorsely prepares" },
           { x: 440, label: "03", title: "EXISTING WORKFLOW", sub: "School's own process" },
         ].map((box, index) => (
           <g key={box.label}>

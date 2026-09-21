@@ -25,14 +25,14 @@ const stages = [
       "Usage rights",
       "Handoff materials",
     ],
-    note: "Institutions review campaigns through their own workflow where that applies. MatchPoint prepares information; it does not approve anything and cannot guarantee an outcome.",
+    note: "Institutions review campaigns through their own workflow where that applies. Endorsely prepares information; it does not approve anything and cannot guarantee an outcome.",
   },
   {
     number: "04",
     title: "Coordinate delivery",
     body: "Scheduling, reminders, the campaign work itself, and collecting evidence that each deliverable actually happened.",
     detail: ["Scheduling", "Content briefs", "Appearance logistics", "Completion evidence"],
-    note: "Payment coordination is a proposed supporting step. MatchPoint does not hold or process funds.",
+    note: "Payment coordination is a proposed supporting step. Endorsely does not hold or process funds.",
   },
   {
     number: "05",
@@ -61,7 +61,7 @@ export function HowItWorks() {
           </Lede>
           <ClaimLabel kind="planned" className="mt-6" />
           <p className="measure mt-3 text-[0.8125rem] leading-snug text-neutral-600">
-            This is the process MatchPoint is being built to run. It is described as
+            This is the process Endorsely is being built to run. It is described as
             intended, not as a record of campaigns already delivered.
           </p>
         </div>

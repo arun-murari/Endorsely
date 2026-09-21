@@ -9,7 +9,7 @@
 
 import type { CampaignBrief, PlannerInput } from "@/lib/planner/rules";
 
-export const HANDOFF_KEY = "matchpoint:planner-handoff";
+export const HANDOFF_KEY = "endorsely:planner-handoff";
 
 export type PlannerHandoff = {
   input: PlannerInput;

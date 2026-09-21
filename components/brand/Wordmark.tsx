@@ -1,7 +1,7 @@
 /**
- * MATCHPOINT wordmark: condensed uppercase type with a lime square acting as
- * the "point" pivot between MATCH and POINT. Built from styled text so it
- * inherits the display face and stays crisp at any size.
+ * ENDORSELY wordmark: condensed uppercase type split by a lime square, which
+ * carries the accent through the lockup. Built from styled text so it inherits
+ * the display face and stays crisp at any size.
  */
 export function Wordmark({
   size = "md",
@@ -25,16 +25,16 @@ export function Wordmark({
         invert ? "text-paper" : "text-ink"
       } ${className}`}
     >
-      <span className="sr-only">MatchPoint</span>
-      <span aria-hidden>Match</span>
+      <span className="sr-only">Endorsely</span>
+      <span aria-hidden>Endorse</span>
       <span className={`${s.square} shrink-0 bg-lime`} aria-hidden />
-      <span aria-hidden>Point</span>
+      <span aria-hidden>ly</span>
     </span>
   );
 }
 
-/** The standalone point mark, used where the full lockup will not fit. */
-export function PointMark({ className = "h-6 w-6" }: { className?: string }) {
+/** The standalone square mark, used where the full lockup will not fit. */
+export function SquareMark({ className = "h-6 w-6" }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden focusable="false">
       <rect x="0" y="0" width="24" height="24" fill="var(--color-ink)" />

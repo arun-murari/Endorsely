@@ -71,7 +71,7 @@ export function serialiseSubmission(
   labels: Record<string, string>,
 ): string {
   const lines: string[] = [];
-  lines.push(`MatchPoint inquiry — ${payload.inquiryType}`);
+  lines.push(`Endorsely inquiry — ${payload.inquiryType}`);
   lines.push("");
   Object.entries(payload.fields).forEach(([key, value]) => {
     const label = labels[key] ?? key;

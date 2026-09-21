@@ -70,7 +70,7 @@ export type DemoPotentialIssue = {
 };
 
 export const demoCampaign = {
-  id: "MP-SAMPLE-0142",
+  id: "EN-SAMPLE-0142",
   label: "Interactive product concept — sample data",
   merchant: {
     name: "Rivergate Strength Co.",
@@ -156,14 +156,14 @@ export const demoCampaign = {
     {
       id: "D-04",
       label: "3 unique offer codes distributed and tracked",
-      owner: "MatchPoint coordination",
+      owner: "Endorsely coordination",
       due: "Week 01",
       status: "Submitted",
     },
     {
       id: "D-05",
       label: "Published-content links collected for the record",
-      owner: "MatchPoint coordination",
+      owner: "Endorsely coordination",
       due: "Week 04",
       status: "Completion evidence pending",
     },
@@ -293,7 +293,7 @@ export const demoCampaign = {
   handoff: {
     status: "Ready for handoff" as CampaignStatus,
     detail:
-      "The packet is organised for the school's existing disclosure and review workflow. MatchPoint does not submit on a school's behalf and no institution has accepted this format.",
+      "The packet is organised for the school's existing disclosure and review workflow. Endorsely does not submit on a school's behalf and no institution has accepted this format.",
   },
   policySet: {
     name: "Sample Policy Set — Northside State",
@@ -359,7 +359,7 @@ export const demoCampaign = {
       {
         label: "Payment record",
         status: "not-applicable" as FieldStatus,
-        note: "No payment has occurred. MatchPoint does not hold or process funds — recordkeeping only.",
+        note: "No payment has occurred. Endorsely does not hold or process funds — recordkeeping only.",
       },
       {
         label: "Disclosure confirmation",

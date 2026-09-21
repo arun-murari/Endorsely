@@ -48,7 +48,7 @@ export default function DemoPage() {
               and what actually happened.
             </Lede>
             <p className="measure mt-4 text-[0.875rem] leading-relaxed text-neutral-600">
-              MatchPoint prepares this packet. The school&apos;s own disclosure and
+              Endorsely prepares this packet. The school&apos;s own disclosure and
               review workflow stays exactly where it is, and no institution has
               accepted this format.
             </p>

@@ -11,7 +11,7 @@ import { DisplayHeading, Eyebrow, Lede, Section } from "@/components/ui/Section"
 import { siteConfig } from "@/lib/site.config";
 
 const description =
-  "How local campaign work with MatchPoint would function for college athletes: content, appearances, youth clinics, recurring ambassador work, and group campaigns across sports.";
+  "How local campaign work with Endorsely would function for college athletes: content, appearances, youth clinics, recurring ambassador work, and group campaigns across sports.";
 
 export const metadata: Metadata = {
   title: "For athletes",
@@ -107,7 +107,7 @@ const process = [
   {
     number: "04",
     title: "Follow the applicable institutional process",
-    body: "Your school's own disclosure and review process applies. MatchPoint prepares the information it asks for; it does not control, replace, or speed up that process, and it cannot tell you whether something is permitted.",
+    body: "Your school's own disclosure and review process applies. Endorsely prepares the information it asks for; it does not control, replace, or speed up that process, and it cannot tell you whether something is permitted.",
   },
   {
     number: "05",
@@ -124,7 +124,7 @@ const process = [
 const notDoing = [
   "Determine your eligibility or tell you what your school permits",
   "Guarantee opportunities, placements, or earnings of any size",
-  "Hold or process payments — MatchPoint does not move money",
+  "Hold or process payments — Endorsely does not move money",
   "Act on behalf of your school, your team, or your compliance office",
   "Require a follower count, an agent, or an existing brand deal",
 ];
@@ -146,7 +146,7 @@ const athleteFaq = [
     id: "pay",
     question: "How is compensation decided?",
     answer:
-      "Per campaign, from scope: how many deliverables, how much in-person time, and what usage rights the business gets. The amount is written down before you agree, and MatchPoint does not publish rates because none are settled.",
+      "Per campaign, from scope: how many deliverables, how much in-person time, and what usage rights the business gets. The amount is written down before you agree, and Endorsely does not publish rates because none are settled.",
   },
   {
     id: "time",
@@ -158,7 +158,7 @@ const athleteFaq = [
     id: "school",
     question: "What if my school already has NIL software?",
     answer:
-      "You keep using it. MatchPoint prepares the campaign information and completion evidence in one place so whatever process your school runs has what it needs. There is no integration with any such product.",
+      "You keep using it. Endorsely prepares the campaign information and completion evidence in one place so whatever process your school runs has what it needs. There is no integration with any such product.",
   },
 ];
 
@@ -173,7 +173,7 @@ export default function AthletesPage() {
               Paid local work, scoped before you say yes.
             </DisplayHeading>
             <Lede className="mt-6 text-ink">
-              MatchPoint builds campaigns for gyms, recovery studios, and
+              Endorsely builds campaigns for gyms, recovery studios, and
               youth-sports organisations near campus, then assembles the athlete
               group those campaigns need. NIL —{" "}
               <strong className="font-semibold">name, image, and likeness</strong> —
@@ -311,7 +311,7 @@ export default function AthletesPage() {
             </div>
             <Bracketed className="mt-8 p-4">
               <p className="mono-label text-neutral-600">
-                What MatchPoint does not do
+                What Endorsely does not do
               </p>
               <ul className="mt-3">
                 {notDoing.map((item) => (

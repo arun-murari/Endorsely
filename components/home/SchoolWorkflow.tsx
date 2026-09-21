@@ -2,7 +2,7 @@ import { HandoffDiagram } from "@/components/graphics/SportGraphics";
 import { TextLink } from "@/components/ui/Button";
 import { DisplayHeading, Eyebrow, Lede, Section } from "@/components/ui/Section";
 
-const matchpointDoes = [
+const endorselyDoes = [
   "Merchant-facing campaign planning and scoping",
   "Athlete group assembly and coordination",
   "Deliverable tracking and completion evidence",
@@ -18,7 +18,7 @@ const schoolKeeps = [
 
 /**
  * Editorial two-column with a hand-built diagram. The division of responsibility
- * is the point of the section: MatchPoint prepares, the school decides.
+ * is the point of the section: Endorsely prepares, the school decides.
  */
 export function SchoolWorkflow() {
   return (
@@ -30,7 +30,7 @@ export function SchoolWorkflow() {
             Better-organized deals. The school&apos;s existing process.
           </DisplayHeading>
           <Lede className="mt-6 text-ink-2">
-            MatchPoint is not a compliance system and does not try to become a
+            Endorsely is not a compliance system and does not try to become a
             school&apos;s system of record. It does the campaign-side work, then hands
             over information that is already complete and consistent.
           </Lede>
@@ -44,10 +44,10 @@ export function SchoolWorkflow() {
           <div className="mt-8 grid gap-8 sm:grid-cols-2">
             <div>
               <h3 className="mono-label border-b-2 border-lime pb-2 text-ink-2">
-                MatchPoint does
+                Endorsely does
               </h3>
               <ul className="mt-1">
-                {matchpointDoes.map((item) => (
+                {endorselyDoes.map((item) => (
                   <li
                     key={item}
                     className="border-b border-rule py-2.5 text-[0.9375rem] leading-snug text-ink"

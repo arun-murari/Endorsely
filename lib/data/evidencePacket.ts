@@ -154,7 +154,7 @@ export const evidencePacket: PacketGroup[] = [
           .map((rule) => rule.id)
           .join(", ")}`,
         status: "provided",
-        note: "Policy sets are supplied to MatchPoint. MatchPoint does not author or interpret institutional policy.",
+        note: "Policy sets are supplied to Endorsely. Endorsely does not author or interpret institutional policy.",
       },
       {
         label: "Outstanding questions",
@@ -171,7 +171,7 @@ export const evidencePacket: PacketGroup[] = [
         label: "Disclosure status",
         value: "Handled through the school's existing process",
         status: "pending",
-        note: "MatchPoint prepares information; the school's workflow records the outcome.",
+        note: "Endorsely prepares information; the school's workflow records the outcome.",
       },
     ],
   },
@@ -210,7 +210,7 @@ export function serialisePacket(): string {
     lines.push(`- ${item.label}: ${formatUsd(item.amount)}`);
   });
   lines.push(
-    `- MatchPoint planning and coordination: ${formatUsd(demoBudgetTotals.planningAndCoordination)}`,
+    `- Endorsely planning and coordination: ${formatUsd(demoBudgetTotals.planningAndCoordination)}`,
   );
   lines.push(`- Illustrative total: ${formatUsd(demoBudgetTotals.total)}`);
   lines.push("");
@@ -234,7 +234,7 @@ export function serialisePacket(): string {
     "- Documentation support is not legal advice or a guarantee of institutional approval.",
   );
   lines.push(
-    "- MatchPoint does not hold or process payments. Payment fields are recordkeeping only.",
+    "- Endorsely does not hold or process payments. Payment fields are recordkeeping only.",
   );
   lines.push(
     "- Statuses never include approved, compliant, or eligible. Those determinations belong to the institution.",

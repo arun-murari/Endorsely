@@ -18,7 +18,7 @@
 
 export const prototypeFeeAssumptions = {
   /**
-   * Share of a campaign budget assumed to cover MatchPoint planning and
+   * Share of a campaign budget assumed to cover Endorsely planning and
    * coordination in prototype allocations. 0.20 keeps the worked example clean:
    * a $1,250 total → $250 coordination + $1,000 athlete compensation pool.
    */

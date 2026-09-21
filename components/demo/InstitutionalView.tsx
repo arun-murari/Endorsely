@@ -106,7 +106,7 @@ export function InstitutionalView() {
           </div>
           <p className="measure mt-3 text-[0.875rem] leading-relaxed text-neutral-600">
             {demoCampaign.policySet.description} Review assistance against a
-            supplied policy set is a proposed capability. MatchPoint does not
+            supplied policy set is a proposed capability. Endorsely does not
             author or interpret institutional policy, and nothing in this demo is a
             compliance determination.
           </p>

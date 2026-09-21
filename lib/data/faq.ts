@@ -1,6 +1,6 @@
 /**
  * FAQ content. Answers are written to keep planned capabilities and functioning
- * ones clearly apart, and to state the two hard limits plainly: MatchPoint does
+ * ones clearly apart, and to state the two hard limits plainly: Endorsely does
  * not hold or process payments, and it does not guarantee compliance or approval.
  */
 
@@ -15,7 +15,7 @@ export const faq: FaqItem[] = [
     id: "choose-athletes",
     question: "Do I have to choose the athletes myself?",
     answer: [
-      "No. You start with a business objective, a budget, and a rough timeline. MatchPoint proposes an athlete group that fits — a mix of sports, contribution types, and local connections — and you approve or adjust it.",
+      "No. You start with a business objective, a budget, and a rough timeline. Endorsely proposes an athlete group that fits — a mix of sports, contribution types, and local connections — and you approve or adjust it.",
       "You can absolutely name preferences. The point is that you should not have to browse profiles and guess.",
     ],
   },
@@ -46,7 +46,7 @@ export const faq: FaqItem[] = [
     id: "budget-includes",
     question: "What would the campaign budget include?",
     answer: [
-      "A campaign budget is planned as separate line items: athlete compensation, MatchPoint planning and coordination, and any other explicitly included costs such as clinic materials. The planner shows those lines added up so nothing is hidden.",
+      "A campaign budget is planned as separate line items: athlete compensation, Endorsely planning and coordination, and any other explicitly included costs such as clinic materials. The planner shows those lines added up so nothing is hidden.",
       "Figures in the planner are illustrative allocations for planning conversations. Pricing is not settled, and final scope and cost would come in a written proposal.",
     ],
   },
@@ -62,23 +62,23 @@ export const faq: FaqItem[] = [
     id: "existing-software",
     question: "What happens when a school already has NIL software?",
     answer: [
-      "The school keeps using it. MatchPoint is designed to prepare better-organised campaign information and completion evidence that a school can take into whatever disclosure and review workflow it already runs — including software it already licenses.",
-      "MatchPoint has no integration with any such product, and mentioning that this software exists is not a claim of a connection to it.",
+      "The school keeps using it. Endorsely is designed to prepare better-organised campaign information and completion evidence that a school can take into whatever disclosure and review workflow it already runs — including software it already licenses.",
+      "Endorsely has no integration with any such product, and mentioning that this software exists is not a claim of a connection to it.",
     ],
   },
   {
     id: "compliance",
-    question: "Does MatchPoint guarantee compliance or approval?",
+    question: "Does Endorsely guarantee compliance or approval?",
     answer: [
-      "No. MatchPoint does not determine eligibility, does not approve campaigns, and cannot guarantee that any institution will approve anything. Review and approval sit with the school.",
-      "What MatchPoint intends to do is make the incoming information complete and consistent: commercial purpose, parties, compensation, dates, deliverables, usage rights, and completion evidence. Documentation support is not legal advice or a guarantee of institutional approval.",
+      "No. Endorsely does not determine eligibility, does not approve campaigns, and cannot guarantee that any institution will approve anything. Review and approval sit with the school.",
+      "What Endorsely intends to do is make the incoming information complete and consistent: commercial purpose, parties, compensation, dates, deliverables, usage rights, and completion evidence. Documentation support is not legal advice or a guarantee of institutional approval.",
     ],
   },
   {
     id: "payments",
-    question: "Is MatchPoint currently holding or processing payments?",
+    question: "Is Endorsely currently holding or processing payments?",
     answer: [
-      "No. MatchPoint does not hold, move, or process funds. There is no escrow, no wallet, and no balance.",
+      "No. Endorsely does not hold, move, or process funds. There is no escrow, no wallet, and no balance.",
       "Payment coordination appears in the product concept as a proposed supporting step and as recordkeeping — a note of whether a payment happened — not as a live financial service.",
     ],
   },
@@ -87,7 +87,7 @@ export const faq: FaqItem[] = [
     question: "How can I participate in the pilot?",
     answer: [
       "Tell us which side you are on — business, athlete, or school and partner — and what you would want out of it. Nothing about an inquiry is a commitment, and an inquiry is not a letter of intent.",
-      "MatchPoint is pre-launch. The first campus is not confirmed, so early conversations are about shaping a small number of repeatable campaign formats rather than booking work.",
+      "Endorsely is pre-launch. The first campus is not confirmed, so early conversations are about shaping a small number of repeatable campaign formats rather than booking work.",
     ],
   },
 ];
